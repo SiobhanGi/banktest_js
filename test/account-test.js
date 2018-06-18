@@ -9,6 +9,10 @@ describe('Account', function() {
     fakeAccount = new Account();
   });
 
+  afterEach(function() {
+    simple.restore();
+  })
+
   describe('_balance', function(){
     it('initializes with default balance of zero', function(){
       expect(fakeAccount._balance).to.equal(0);
@@ -33,6 +37,17 @@ describe('Account', function() {
       fakeAccount.deposit(50);
       fakeAccount.withdraw(50);
       expect(fakeAccount._balance).to.equal(0);
+    })
+  })
+
+  describe('formatDate', function() {
+    beforeEach(function() {
+      simple.mock(fakeAccount, 'formatDate');
+    })
+
+    it('returns current date', function() {
+      fakeAccount.formatDate.returnWith('1-1-2018');
+      expect(fakeAccount.formatDate()).to.equal('1-1-2018');
     })
   })
 })
