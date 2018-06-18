@@ -27,6 +27,12 @@ class Account {
   addToTransactionLog() {
     this.transactionDailyLog['balance'] = this._balance;
     this._transactionLog.push(this.transactionDailyLog);
+    this.resetTransactionDailyLog();
+  }
+
+  resetTransactionDailyLog() {
+    this.transactionDailyLog['debit'] = 0;
+    this.transactionDailyLog['credit'] = 0;
   }
 
   formatDate() {

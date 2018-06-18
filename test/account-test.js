@@ -22,7 +22,6 @@ describe('Account', function() {
   describe('transactionDailyLog', function() {
     beforeEach(function() {
       simple.mock(fakeAccount, 'formatDate');
-
     })
     // issue with this scope
     // it('.date initializes with todays date', function () {
@@ -47,8 +46,6 @@ describe('Account', function() {
     it('adds amount to balance', function() {
       fakeAccount.deposit(50);
       expect(fakeAccount._balance).to.equal(50);
-      expect(fakeAccount.transactionDailyLog.balance).to.equal(50);
-      expect(fakeAccount.transactionDailyLog.debit).to.equal(50);
     })
   })
 
@@ -57,7 +54,6 @@ describe('Account', function() {
       fakeAccount.deposit(50);
       fakeAccount.withdraw(50);
       expect(fakeAccount._balance).to.equal(0);
-      expect(fakeAccount.transactionDailyLog.credit).to.equal(50);
     })
   })
 
@@ -71,6 +67,15 @@ describe('Account', function() {
       fakeAccount.deposit(50);
       fakeAccount.deposit(50);
       expect(fakeAccount._transactionLog).to.have.length(2);
+    })
+  })
+
+  describe('resetDailyTransactionLog', function() {
+    it('resets daily log credit to 0', function() {
+      fakeAccount.withdraw(50);
+      fakeAccount.resetTransactionDailyLog();
+      expect(fakeAccount.transactionDailyLog.credit).to.equal(0)
+
     })
   })
 
