@@ -20,6 +20,8 @@ class Account {
 
   withdraw(amount) {
     this._balance -= amount;
+    this.transactionDailyLog['credit'] = amount;
+    this.addToTransactionLog();
   }
 
   addToTransactionLog() {

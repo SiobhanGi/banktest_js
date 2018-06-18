@@ -57,6 +57,7 @@ describe('Account', function() {
       fakeAccount.deposit(50);
       fakeAccount.withdraw(50);
       expect(fakeAccount._balance).to.equal(0);
+      expect(fakeAccount.transactionDailyLog.credit).to.equal(50);
     })
   })
 
@@ -65,7 +66,7 @@ describe('Account', function() {
       fakeAccount.deposit(50);
       expect(fakeAccount._transactionLog).to.have.length(1);
     })
-    
+
     it('pushes daily log to transaction log twice', function() {
       fakeAccount.deposit(50);
       fakeAccount.deposit(50);
