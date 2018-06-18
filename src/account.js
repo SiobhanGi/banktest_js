@@ -1,6 +1,7 @@
 class Account {
   constructor() {
     this._balance = 0;
+    this._transactionLog = [];
   }
 
   deposit(amount) {

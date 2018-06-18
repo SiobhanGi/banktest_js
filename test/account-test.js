@@ -15,6 +15,12 @@ describe('Account', function() {
     });
   });
 
+  describe('_transactionLog', function(){
+    it('initializes as an empty array', function() {
+      expect(fakeAccount._transactionLog).to.deep.equal([]);
+    })
+  })
+
   describe('deposit', function(){
     it('adds amount to balance', function() {
       fakeAccount.deposit(50);
