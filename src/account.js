@@ -3,28 +3,33 @@ class Account {
   constructor() {
     this._balance = 0;
     this._transactionLog = [];
-    this.date = new Date;
+    this.date = this.formatDate();
 
     this.transactionDailyLog = {
-      date: this.formatDate(),
+      date: this.date,
       debit: 0,
       credit: 0,
-      balance: this._balance
     }
   }
 
   deposit(amount) {
     this._balance += amount;
     this.transactionDailyLog['debit'] = amount;
-    this.transactionDailyLog['balance'] = this._balance;
+    this.addToTransactionLog();
   }
 
   withdraw(amount) {
     this._balance -= amount;
   }
 
+  addToTransactionLog() {
+    this.transactionDailyLog['balance'] = this._balance;
+    this._transactionLog.push(this.transactionDailyLog);
+  }
+
   formatDate() {
-    return (`${this.date.getDate()}-${this.date.getMonth()}-${this.date.getFullYear()}`);
+    let date = new Date;
+    return (`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`);
   }
 }
 

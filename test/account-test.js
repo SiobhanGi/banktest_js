@@ -13,12 +13,6 @@ describe('Account', function() {
     simple.restore();
   })
 
-  describe('_balance', function(){
-    it('initializes with default balance of zero', function(){
-      expect(fakeAccount._balance).to.equal(0);
-    });
-  });
-
   describe('_transactionLog', function(){
     it('initializes as an empty array', function() {
       expect(fakeAccount._transactionLog).to.deep.equal([]);
@@ -63,6 +57,19 @@ describe('Account', function() {
       fakeAccount.deposit(50);
       fakeAccount.withdraw(50);
       expect(fakeAccount._balance).to.equal(0);
+    })
+  })
+
+  describe('addToTransactionLog', function(){
+    it('pushes daily log to transaction log', function() {
+      fakeAccount.deposit(50);
+      expect(fakeAccount._transactionLog).to.have.length(1);
+    })
+    
+    it('pushes daily log to transaction log twice', function() {
+      fakeAccount.deposit(50);
+      fakeAccount.deposit(50);
+      expect(fakeAccount._transactionLog).to.have.length(2);
     })
   })
 
