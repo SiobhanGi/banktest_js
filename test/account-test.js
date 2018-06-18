@@ -25,10 +25,36 @@ describe('Account', function() {
     })
   })
 
+  describe('transactionDailyLog', function() {
+    beforeEach(function() {
+      simple.mock(fakeAccount, 'formatDate');
+
+    })
+    // issue with this scope
+    // it('.date initializes with todays date', function () {
+    //   fakeAccount.formatDate.returnWith('1-1-2018');
+    //   expect(fakeAccount.transactionDailyLog.date).to.equal('1-1-2018');
+    // });
+
+    it('.debit initializes with 0', function() {
+      expect(fakeAccount.transactionDailyLog.debit).to.equal(0);
+    })
+
+    it('prop credit initializes with 0', function() {
+      expect(fakeAccount.transactionDailyLog.credit).to.equal(0);
+    })
+    // issue with this scope
+    // it('prop balance initializes with 0', function() {
+    //   expect(fakeAccount.transactionDailyLog.balance.to.equal(0));
+    // })
+  })
+
   describe('deposit', function(){
     it('adds amount to balance', function() {
       fakeAccount.deposit(50);
       expect(fakeAccount._balance).to.equal(50);
+      expect(fakeAccount.transactionDailyLog.balance).to.equal(50);
+      expect(fakeAccount.transactionDailyLog.debit).to.equal(50);
     })
   })
 
