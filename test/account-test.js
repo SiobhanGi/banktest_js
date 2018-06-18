@@ -5,7 +5,7 @@ let simple = require('simple-mock');
 describe('Account', function() {
   var fakeAccount;
 
-  before(function() {
+  beforeEach(function() {
     fakeAccount = new Account();
   });
 
@@ -22,7 +22,11 @@ describe('Account', function() {
     })
   })
 
-
-
-
+  describe('withdraw', function() {
+    it('withdraws amount from balance', function() {
+      fakeAccount.deposit(50);
+      fakeAccount.withdraw(50);
+      expect(fakeAccount._balance).to.equal(0);
+    })
+  })
 })
