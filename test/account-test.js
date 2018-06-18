@@ -15,9 +15,14 @@ describe('Account', function() {
     });
   });
 
-  describe('showBalance', function() {
-    it('shows the current balance of the account', function() {
-      expect(fakeAccount.showBalance()).to.equal(0);
+  describe('deposit', function(){
+    it('adds amount to balance', function() {
+      fakeAccount.deposit(50);
+      expect(fakeAccount._balance).to.equal(50);
     })
   })
+
+
+
+
 })
