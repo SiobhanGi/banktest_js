@@ -1,6 +1,7 @@
 class Account {
   constructor() {
     this.log = new Log;
+    this.statement = new Log;
     this.balance = 0;
   }
 
@@ -11,10 +12,14 @@ class Account {
 
   withdraw(amount) {
     this.balance = this.balance -= amount;
-    this.log.details.push(new Transaction('debit', amount, this.balance));
+    this.log.details.push(new Transaction('credit', amount, this.balance));
   }
 
-  // print statement
+  print() {
+    var statement = new Statement(this.log)
+    console.log(statement)
+    statement.print();
+  }
 }
 
 module.exports = Account;

@@ -17,7 +17,7 @@ describe('Account', function() {
       fakeAccount = new Account;
       fakeAccount.deposit(50);
       expect(fakeAccount.balance).to.equal(50);
-      // expect(fakeAccount.log).to.equal('debit');
+      expect(fakeAccount.log).to.equal('debit');
     })
   });
 
