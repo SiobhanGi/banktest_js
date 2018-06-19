@@ -7,6 +7,7 @@ describe('Transaction', function() {
 
   beforeEach(function() {
     fakeTransaction = new Transaction('credit', 50, 50);
+    var clock = sinon.useFakeTimers(new Date(2018,1,1));
   });
 
   describe('constructor', function() {
@@ -17,19 +18,10 @@ describe('Transaction', function() {
     })
   })
 
-  // afterEach(function() {
-  //   simple.restore();
-  // });
-
-  // describe('formatDate', function() {
-  //   beforeEach(function() {
-  //     simple.mock(fakeTransaction, formatDate());
-  //   })
-  //
-  //   it('returns current date', function() {
-  //     fakeTransaction.formatDate().returnWith('1-1-2018');
-  //     expect(fakeTransaction.date).to.equal('19-5-2018');
-  //   })
-  // });
-
+  describe('formatDate', function() {
+    it('returns current date', function() {
+      fakeTransaction.formatDate();
+      expect(fakeTransaction.date).to.equal('1-1-2018');
+    })
+  });
 })
