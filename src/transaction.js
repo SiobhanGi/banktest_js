@@ -10,10 +10,10 @@ class Transaction  {
     } else if (type === 'debit') {
       this.balance = amount;
     } else {
-      'invalid transaction type'
+      return 'invalid transaction type'
     }
-      this.type = type;
-      this.amount = amount;
+    this.type = type;
+    this.amount = amount;
   }
 
   formatDate() {
