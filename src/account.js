@@ -1,44 +1,17 @@
 class Account {
-
   constructor() {
-    this._balance = 0;
-    this._transactionLog = [];
-    this.date = this.formatDate();
-
-    this.transactionDailyLog = {
-      date: this.date,
-      debit: 0,
-      credit: 0,
-    };
+    this.transaction = new Transaction();
   }
 
   deposit(amount) {
-    this._balance += amount;
-    this.transactionDailyLog.debit = amount;
-    this.addToTransactionLog();
+    this.transaction.addTransaction('debit', amount);
   }
 
   withdraw(amount) {
-    this._balance -= amount;
-    this.transactionDailyLog.credit = amount;
-    this.addToTransactionLog();
+    this.transaction.addTransaction('credit', amount);
   }
 
-  addToTransactionLog() {
-    this.transactionDailyLog.balance = this._balance;
-    this._transactionLog.push(this.transactionDailyLog);
-    this.resetTransactionDailyLog();
-  }
-
-  resetTransactionDailyLog() {
-    this.transactionDailyLog.debit = 0;
-    this.transactionDailyLog.credit = 0;
-  }
-
-  formatDate() {
-    const date = new Date();
-    return (`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`);
-  }
+  // print statement
 }
 
 module.exports = Account;
