@@ -1,6 +1,6 @@
 const Transaction = require('../src/transaction');
 const expect = require('chai').expect;
-const simple = require('simple-mock');
+const sinon = require('sinon');
 
 describe('Transaction', function() {
   var fakeTransaction;

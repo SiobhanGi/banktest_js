@@ -1,6 +1,6 @@
 class Account {
   constructor() {
-    this.log = new Log
+    this.log = new Log;
     this.balance = 0;
   }
 

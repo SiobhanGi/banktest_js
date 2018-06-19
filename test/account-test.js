@@ -1,19 +1,20 @@
 const Account = require('../src/account');
+const Transaction = require('../src/transaction');
 const expect = require('chai').expect;
-const simple = require('simple-mock');
+const sinon = require('sinon');
 
 describe('Account', function() {
-  var fakeAccount;
+  var fakeAccount; var fakeLog;
 
-  // beforeEach(function() {
-  //   fakeAccount = new Account();
-  //   simple.stub(Log, '[]')
-  //   simple.stub(fakeAccount, 'Log')
-  //   simple.stub(fakeAccount, 'Log')
-  // });
+  beforeEach(function() {
+    fakeLog = new Log;
+    fakeAccount = new Account();
+
+  });
 
   describe('deposit', function() {
     it('adds amount to balance', function() {
+      fakeAccount = new Account;
       fakeAccount.deposit(50);
       expect(fakeAccount.balance).to.equal(50);
       // expect(fakeAccount.log).to.equal('debit');

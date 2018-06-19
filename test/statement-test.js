@@ -1,10 +1,6 @@
-const TransactionLog = require('../src/transactionLog');
-const Statement = require('../src/statement');
 const Account = require('../src/account');
-
-
+const sinon = require('sinon');
 const expect = require('chai').expect;
-const simple = require('simple-mock');
 
 describe('Statement', function() {
   var fakeStatement; var fakeLog; var fakeAccount;
