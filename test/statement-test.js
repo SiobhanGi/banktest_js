@@ -1,18 +1,18 @@
-const Account = require('../src/account');
+const TransactionLog = require('../src/transactionLog');
 const Statement = require('../src/statement');
+const Account = require('../src/account');
+
 
 const expect = require('chai').expect;
 const simple = require('simple-mock');
 
 describe('Statement', function() {
-  var fakeAccount;
-  var fakeStatement;
+  var fakeStatement; var fakeLog; var fakeAccount;
 
   beforeEach(function() {
-    fakeAccount = new Account();
-    fakeAccount.deposit(50);
-    fakeAccount.withdraw(10);
-    fakeStatement = new Statement();
+    fakeAccount = new Account;
+    fakeLog = new TransactionLog(fakeAccount);
+    fakeStatement = new Statement(fakeLog);
   });
 
   describe('header', function() {
@@ -20,6 +20,4 @@ describe('Statement', function() {
       expect(fakeStatement.header()).to.equal('date || credit || debit || balance')
     })
   })
-
-
 })
