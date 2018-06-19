@@ -1,6 +1,5 @@
 class Log {
-  constructor(account = new Account) {
-    this.account = account;
+  constructor() {
     this.details = [];
   }
 }

@@ -6,32 +6,20 @@ describe('Transaction', function() {
   var fakeTransaction;
 
   beforeEach(function() {
-    fakeTransaction = new Transaction();
+    fakeTransaction = new Transaction('credit', 50, 50);
   });
+
+  describe('constructor', function() {
+    it('returns the type of transaction', function() {
+      expect(fakeTransaction.type).to.equal('credit');
+      expect(fakeTransaction.amount).to.equal(50);
+      expect(fakeTransaction.balance).to.equal(50)
+    })
+  })
 
   // afterEach(function() {
   //   simple.restore();
   // });
-
-  describe('addTransaction', function() {
-    it('sets props based if transaction type is credit', function() {
-      fakeTransaction.addTransaction('credit', 50)
-        expect(fakeTransaction.type).to.equal('credit');
-        expect(fakeTransaction.amount).to.equal(50);
-        expect(fakeTransaction.balance).to.equal(-50);
-    });
-
-    it('sets props based if transaction type is debit', function() {
-      fakeTransaction.addTransaction('debit', 50)
-        expect(fakeTransaction.type).to.equal('debit');
-        expect(fakeTransaction.amount).to.equal(50);
-        expect(fakeTransaction.balance).to.equal(50);
-    });
-
-    it('returns message if invalid transaction type', function() {
-        expect(fakeTransaction.addTransaction('nil', 50)).to.equal('invalid transaction type');
-    });
-  });
 
   // describe('formatDate', function() {
   //   beforeEach(function() {
