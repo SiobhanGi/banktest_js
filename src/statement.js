@@ -9,7 +9,6 @@ class Statement {
 
   print() {
     console.log(this.header());
-    console.log(typeof this.data);
     for(var i = 0; i < this.data.details.length; i++) {
       console.log(`${this.data.details[i].date}\t||` +
                   `${this.data.details[i].type}\t\t\t||` +

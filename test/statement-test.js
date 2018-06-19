@@ -1,9 +1,13 @@
 const Statement = require('../src/statement');
 const sinon = require('sinon');
+const sinonChai = require("sinon-chai");
+const chai = require('chai')
 const expect = require('chai').expect;
+chai.use(sinonChai);
+
 
 describe('Statement', function() {
-  var fakeStatement; var printStub;
+  var fakeStatement;
 
   beforeEach(function() {
     var data = {
@@ -23,6 +27,7 @@ describe('Statement', function() {
   describe('print', function() {
     it('prints out data to console', function() {
       sinon.spy(console, 'log');
+      fakeStatement.print();
       expect(console.log).to.have.been.called;
     });
   })
