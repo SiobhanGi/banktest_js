@@ -6,7 +6,6 @@ const expect = require('chai').expect;
 
 chai.use(sinonChai);
 
-
 describe('Statement', function() {
   var fakeStatement;
 

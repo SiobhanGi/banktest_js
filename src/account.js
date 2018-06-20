@@ -2,17 +2,17 @@ class Account {
   constructor() {
     this.log = new Log;
     this.statement = new Log;
-    this.balance = 0;
+    this._balance = 0;
   }
 
   deposit(amount) {
-    this.balance = this.balance += amount;
-    this.log.details.push(new Transaction('debit', amount, this.balance));
+    this._balance = this._balance += amount;
+    this.log.details.push(new Transaction('debit', amount, this._balance));
   }
 
   withdraw(amount) {
-    this.balance = this.balance -= amount;
-    this.log.details.push(new Transaction('credit', amount, this.balance));
+    this._balance = this._balance -= amount;
+    this.log.details.push(new Transaction('credit', amount, this._balance));
   }
 
   print() {

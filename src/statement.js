@@ -10,8 +10,8 @@ class Statement {
 
   printHeader() {
     console.log(this.header());
-
   }
+
   printData() {
     for(var i = 0; i < this.data.details.length; i++) {
     this.formatedData += (`${this.data.details[i].date}\t||` +
