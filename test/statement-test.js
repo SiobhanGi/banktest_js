@@ -33,7 +33,7 @@ describe('Statement', function() {
     });
   })
 
-  describe('formatData', function() {
+  describe('printData', function() {
     it('saves data to string', function() {
       fakeStatement.printData();
       expect(fakeStatement.formatedData).to.equal("19-5-2018\t||credit\t\t\t||50\t||-50");

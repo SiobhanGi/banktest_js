@@ -41,5 +41,4 @@ describe('Account', function() {
       expect(() => fakeAccount.withdraw(50)).to.throw();
     })
   });
-
 });
