@@ -18,18 +18,8 @@ describe('Account', function() {
     statement = sinon.createStubInstance(Statement);
     transaction = sinon.createStubInstance(Transaction);
 
-    const namespace = {
-      Service: require('./service')
-    };
-{
-    sinon.stub(Transaction, 'addToDetails').returns(0);
-        console.log(new namespace.Service()); // Service {}
-      });
-    });
 
-
-
-    fakeAccount = new Account(log, statement);
+    fakeAccount = new Account(log, statement, transaction);
     var clock = sinon.useFakeTimers(new Date(2018,1,1));
   });
 
@@ -46,14 +36,10 @@ describe('Account', function() {
       fakeAccount.withdraw(50);
       expect(fakeAccount._balance).to.equal(0);
     })
-  });
 
-  describe('print', function() {
-    it('prints out statement to console', function() {
-      sinon.spy(console, 'log');
-      fakeAccount.print();
-      expect(console.log).to.have.been.calledTwice;
+    it('throws error if withdraw makes balance negative', function() {
+      expect(() => fakeAccount.withdraw(50)).to.throw();
     })
-  })
+  });
 
 });
