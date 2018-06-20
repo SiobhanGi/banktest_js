@@ -1,5 +1,7 @@
 const Account = require('../src/account');
 const Log = require('../src/log');
+const Statement = require('../src/statement');
+const Transaction = require('../src/transaction');
 
 const sinon = require('sinon');
 const sinonChai = require("sinon-chai");
@@ -9,11 +11,25 @@ const expect = require('chai').expect;
 chai.use(sinonChai);
 
 describe('Account', function() {
-  var fakeAccount; var log;
+  var fakeAccount; var log; var statement;
 
   beforeEach(function() {
-    log = sinon.spy(Log, 'details');
-    fakeAccount = new Account(log);
+    log = sinon.createStubInstance(Log);
+    statement = sinon.createStubInstance(Statement);
+    transaction = sinon.createStubInstance(Transaction);
+
+    const namespace = {
+      Service: require('./service')
+    };
+{
+    sinon.stub(Transaction, 'addToDetails').returns(0);
+        console.log(new namespace.Service()); // Service {}
+      });
+    });
+
+
+
+    fakeAccount = new Account(log, statement);
     var clock = sinon.useFakeTimers(new Date(2018,1,1));
   });
 
@@ -21,21 +37,14 @@ describe('Account', function() {
     it('adds amount to balance', function() {
       fakeAccount.deposit(50);
       expect(fakeAccount._balance).to.equal(50);
-      expect(fakeAccount.log.detail[0].type).to.equal('debit');
-      expect(fakeAccount.log.detail[0].amount).to.equal(50);
-      expect(fakeAccount.log.detail[0].date).to.equal('1-1-2018');
-      expect(fakeAccount.log.detail[0].balance).to.equal(50);
     })
   });
 
   describe('withdraw', function() {
     it('withdraws amount from balance', function() {
+      fakeAccount.deposit(50);
       fakeAccount.withdraw(50);
-      expect(fakeAccount._balance).to.equal(-50);
-      expect(fakeAccount.log.detail[0].type).to.equal('credit');
-      expect(fakeAccount.log.detail[0].amount).to.equal(50);
-      expect(fakeAccount.log.detail[0].date).to.equal('1-1-2018');
-      expect(fakeAccount.log.detail[0].balance).to.equal(-50);
+      expect(fakeAccount._balance).to.equal(0);
     })
   });
 
