@@ -5,13 +5,19 @@ Bank Test is a command line app written in JavaScript. It simulates a simple  ba
 
 
 ## Technologies
+
 Javascript
+
 Node.js
 
 #### Testing frameworks
+
 Mocha - framework
+
 Chai - expect/assertion library
+
 Istanbul - code coverage
+
 Sinon - mocking/spies
 
 
@@ -33,16 +39,22 @@ Open console log via developer tools
 
 
 #### Commands
+
+
 Start app
+
 `var account = new Account`
 
 Deposit
+
 `account.deposit(amount_you_want)
 
 Withdraw
+
 `account.withdraw(amount_you_want)`
 
 Print statement
+
 `account.print()`
 
 
@@ -50,9 +62,11 @@ Print statement
 ## Running tests
 
 To run tests with coverage
+
 `npm test`
 
 To specify the file
+
 `npm test test/file.js`
 
 
