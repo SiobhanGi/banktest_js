@@ -17,7 +17,7 @@ class Statement {
     this.formatedData += (`${this.data.details[i].date}\t||` +
                    `${this.data.details[i].type}\t\t\t||` +
                    `${this.data.details[i].amount}\t||` +
-                   `${this.data.details[i].balance}`)
+                   `${this.data.details[i].balance}\n`)
     }
     console.log(this.formatedData);
   }
