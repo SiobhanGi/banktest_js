@@ -17,8 +17,8 @@ class Account {
 
   print() {
     var statement = new Statement(this.log)
-    console.log(statement)
-    statement.print();
+    statement.printHeader();
+    statement.printData();
   }
 }
 
