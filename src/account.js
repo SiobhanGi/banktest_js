@@ -1,6 +1,7 @@
 class Account {
-  constructor() {
+  constructor(log, statement) {
     this.log = new Log();
+    this.statement = new Statement();
     this._balance = 0;
   }
 
@@ -20,9 +21,8 @@ class Account {
   }
 
   print() {
-    var statement = new Statement(this.log);
-    statement.printHeader();
-    statement.printData();
+    this.statement.printHeader();
+    this.statement.printData();
   }
 }
 

@@ -1,17 +1,19 @@
 const Account = require('../src/account');
+const Log = require('../src/log');
+
 const sinon = require('sinon');
 const sinonChai = require("sinon-chai");
 const chai = require('chai')
 const expect = require('chai').expect;
 
 chai.use(sinonChai);
-//
+
 describe('Account', function() {
-  var fakeAccount; var fakeLog;
+  var fakeAccount; var log;
 
   beforeEach(function() {
-    fakeLog = new Log;
-    fakeAccount = new Account();
+    log = sinon.spy(Log, 'details');
+    fakeAccount = new Account(log);
     var clock = sinon.useFakeTimers(new Date(2018,1,1));
   });
 
