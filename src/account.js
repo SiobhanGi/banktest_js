@@ -11,8 +11,13 @@ class Account {
   }
 
   withdraw(amount) {
-    this._balance = this._balance -= amount;
-    this.log.details.push(new Transaction('credit', amount, this._balance));
+    const minAmount = 0;
+    if((this._balance + amount) >= minAmount) {
+      this._balance = this._balance -= amount;
+      this.log.details.push(new Transaction('credit', amount, this._balance));
+    } else {
+      throw "Parameter is not a number!";
+    }
   }
 
   print() {

@@ -5,7 +5,7 @@ const chai = require('chai')
 const expect = require('chai').expect;
 
 chai.use(sinonChai);
-
+//
 describe('Account', function() {
   var fakeAccount; var fakeLog;
 
