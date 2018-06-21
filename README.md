@@ -60,15 +60,11 @@ Print statement
 
 Achieved 100% test coverage.
 
-To run tests with coverage
-`$ npm test`
+To run tests with coverage</br>`$ npm test`
 
-To specify the file
-`$ npm test test/file.js`
+To specify the file</br>`$ npm test test/file.js`
 
 
 ## Issues
 
-Originally used simple-mocks as a mocking add-on to Mocha, which I uninstalled to use sinon as the mocking because of its larger documentation and support. Was still unable to find out how to mock dependencies of my Account class constructor.
-
-If I could redo these 2 days I would not have experimented with different ways of writing Javascript during a ‘soft timed’ tech test, I was curious of using the ES6 classes and this led me to planning the app with a Ruby OOP mindset. I therefore had to redesign the app and greatly refactor delaying the app’s my completion.
+Originally used simple-mocks as a mocking add-on to Mocha, which I uninstalled and replaced with Sinon because of its larger documentation and support.
