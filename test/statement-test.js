@@ -10,14 +10,17 @@ describe('Statement', function() {
   var fakeStatement;
 
   beforeEach(function() {
+    var clock = sinon.useFakeTimers(new Date(2018,1,1));
+
     var data = { log: {details: ['Transaction', {
-      date: "19-5-2018",
+      date: new Date,
       type: "credit",
       amount: 50,
       balance:-50}]}
 
     }
     fakeStatement = new Statement(data);
+    console.log(data);
   });
 
   describe('printHeader', function() {
@@ -28,8 +31,15 @@ describe('Statement', function() {
     });
   })
 
+  describe('formatDate', function() {
+    it('formats a date to string', function() {
+      expect(fakeStatement.formatDate(new Date)).to.equal('1-1-2018')
+    })
+  })
+
   describe('printData', function() {
     it('prints out data to console', function() {
+      var stub = sinon.stub(fakeStatement, "formatDate");
       fakeStatement.printData();
       expect(console.log).to.have.been.called;
     })

@@ -25,6 +25,7 @@ describe('Account', function() {
     it('returns object for log', function() {
       expect(fakeAccount.log).to.deep.equal({});
     })
+    
     it('returns object for transaction', function() {
       expect(fakeAccount.transaction).to.deep.equal({});
     })

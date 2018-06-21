@@ -2,7 +2,7 @@ class Transaction  {
   constructor() {
     this.type = '';
     this.amount = 0;
-    this.date = (new Date).toString();
+    this.date = new Date;
     this.balance = 0;
   }
 

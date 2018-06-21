@@ -9,9 +9,8 @@ class Account {
 
   deposit(amount) {
     this._balance += amount;
-    this.log
-        .addToDetails(this.transaction
-        .addTransactionDetails('debit', amount, this._balance));
+    this.transaction.addTransactionDetails('debit', amount, this._balance)
+    this.log.addToDetails(this.transaction);
   }
 
   withdraw(amount) {
