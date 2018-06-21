@@ -10,21 +10,15 @@ describe('Statement', function() {
   var fakeStatement;
 
   beforeEach(function() {
-    var data = {
-      details: ['Transaction', {
-        date: "19-5-2018",
-        type: "credit",
-        amount: 50,
-        balance:-50}]
+    var data = { log: {details: ['Transaction', {
+      date: "19-5-2018",
+      type: "credit",
+      amount: 50,
+      balance:-50}]}
+
     }
     fakeStatement = new Statement(data);
   });
-
-  describe('header', function() {
-    it('returns header text', function() {
-      expect(fakeStatement.header()).to.equal('date \t\t|| transaction type || amount || balance')
-    })
-  })
 
   describe('printHeader', function() {
     it('prints out header to console', function() {

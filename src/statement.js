@@ -1,15 +1,11 @@
 class Statement {
   constructor(data) {
-    this.data = data || Account.log;
+    this.data = data;
     this.formatedData = '';
   }
 
-  header() {
-    return ('date \t\t|| transaction type || amount || balance')
-  }
-
   printHeader() {
-    console.log(this.header());
+    console.log('date \t\t|| transaction type || amount || balance');
   }
 
   printData() {

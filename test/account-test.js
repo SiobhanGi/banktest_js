@@ -15,13 +15,20 @@ describe('Account', function() {
 
   beforeEach(function() {
     log = sinon.createStubInstance(Log);
-    statement = sinon.createStubInstance(Statement);
     transaction = sinon.createStubInstance(Transaction);
 
-
-    fakeAccount = new Account(log, statement, transaction);
+    fakeAccount = new Account(log, transaction);
     var clock = sinon.useFakeTimers(new Date(2018,1,1));
   });
+
+  describe('constructor', function() {
+    it('returns object for log', function() {
+      expect(fakeAccount.log).to.deep.equal({});
+    })
+    it('returns object for transaction', function() {
+      expect(fakeAccount.transaction).to.deep.equal({});
+    })
+  })
 
   describe('deposit', function() {
     it('adds amount to balance', function() {
@@ -41,15 +48,5 @@ describe('Account', function() {
       expect(() => fakeAccount.withdraw(50)).to.throw();
     })
   });
-
-  describe('print', function() {
-   it('prints out statement to console', function() {
-     var state2 = sinon.spy(statement, 'printHeader');
-     // var state2 = sinon.stub(statement, "printHeader", func)
-     // fakeAccount.print();
-     // var state2 = sinon.stub(statement, "printHeader", func)
-     expect(statement).to.have.been.calledTwice;
-   })
- })
 
 });
