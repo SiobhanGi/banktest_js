@@ -1,28 +1,27 @@
+const minAmount = 0;
+
 class Account {
-  constructor() {
-    this.log = new Log();
-    this._balance = 0;
+  constructor(log, transaction) {
+    this.log = log || new Log;
+    this.transaction = transaction || new Transaction();
+    this._balance = minAmount;
   }
 
   deposit(amount) {
     this._balance += amount;
-    this.log.details.push(new Transaction('debit', amount, this._balance));
+    this.transaction.addTransactionDetails('debit', amount, this._balance)
+    this.log.addToDetails(this.transaction);
   }
 
   withdraw(amount) {
-    const minAmount = 0;
-    if ((this._balance + amount) >= minAmount) {
-      this._balance -= amount;
-      this.log.details.push(new Transaction('credit', amount, this._balance));
+    if ((this._balance - amount) < minAmount) {
+      throw new TypeError('Parameter is not a number!');
     } else {
-      throw 'Parameter is not a number!';
+      this._balance -= amount;
+      this.log
+        .addToDetails(this.transaction
+        .addTransactionDetails('credit', amount, this._balance));
     }
-  }
-
-  print() {
-    var statement = new Statement(this.log);
-    statement.printHeader();
-    statement.printData();
   }
 }
 

@@ -4,20 +4,18 @@ class Statement {
     this.formatedData = '';
   }
 
-  header() {
-    return ('date \t\t|| transaction type || amount || balance')
+  formatDate(date) {
+    return (`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`);
   }
 
   printHeader() {
-    console.log(this.header());
+    console.log('date \t\t|| transaction type || amount || balance');
   }
 
   printData() {
-    for(var i = 0; i < this.data.details.length; i++) {
-    this.formatedData += (`${this.data.details[i].date}\t||` +
-                   `${this.data.details[i].type}\t\t\t||` +
-                   `${this.data.details[i].amount}\t||` +
-                   `${this.data.details[i].balance}\n`)
+    for(var i = 0; i < this.data.log.details.length; i++) {
+    let transaction = this.data.log.details[i];
+    this.formatedData += (`${this.formatDate(transaction.date)}\t||\t${transaction.type}\t\t\t||\t${transaction.amount}\t||\t${transaction.balance}\n`)
     }
     console.log(this.formatedData);
   }
