@@ -1,9 +1,8 @@
 const minAmount = 0;
 
 class Account {
-  constructor(log, statement, transaction) {
+  constructor(log, transaction) {
     this.log = log || new Log;
-    this.statement = statement || new Statement();
     this.transaction = transaction || new Transaction();
     this._balance = 0;
   }
@@ -24,11 +23,6 @@ class Account {
         .addToDetails(this.transaction
         .addTransactionDetails('credit', amount, this._balance));
     }
-  }
-
-  print() {
-    this.statement.printHeader();
-    this.statement.printData();
   }
 }
 

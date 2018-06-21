@@ -41,4 +41,15 @@ describe('Account', function() {
       expect(() => fakeAccount.withdraw(50)).to.throw();
     })
   });
+
+  describe('print', function() {
+   it('prints out statement to console', function() {
+     var state2 = sinon.spy(statement, 'printHeader');
+     // var state2 = sinon.stub(statement, "printHeader", func)
+     // fakeAccount.print();
+     // var state2 = sinon.stub(statement, "printHeader", func)
+     expect(statement).to.have.been.calledTwice;
+   })
+ })
+
 });
