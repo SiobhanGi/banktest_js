@@ -4,7 +4,7 @@ class Account {
   constructor(log, transaction) {
     this.log = log || new Log;
     this.transaction = transaction || new Transaction();
-    this._balance = 0;
+    this._balance = minAmount;
   }
 
   deposit(amount) {

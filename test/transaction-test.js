@@ -18,13 +18,6 @@ describe('Transaction', function() {
     })
   })
 
-  describe('formatDate', function() {
-    it('returns current date', function() {
-      fakeTransaction.formatDate();
-      expect(fakeTransaction.date).to.equal('1-1-2018');
-    })
-  });
-
   describe('addTransactionDetails', function() {
     it('adds args to properties', function() {
       fakeTransaction.addTransactionDetails('debit', 50, 50);

@@ -4,8 +4,7 @@ class Statement {
     this.formatedData = '';
   }
 
-  formatDate() {
-    const date = new Date();
+  formatDate(date) {
     return (`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`);
   }
 
@@ -16,7 +15,7 @@ class Statement {
   printData() {
     for(var i = 0; i < this.data.log.details.length; i++) {
     let transaction = this.data.log.details[i];
-    this.formatedData += (`${transaction.date}\t||\t${transaction.type}\t\t\t||\t${transaction.amount}\t||\t${transaction.balance}\n`)
+    this.formatedData += (`${this.formatDate(transaction.date)}\t||\t${transaction.type}\t\t\t||\t${transaction.amount}\t||\t${transaction.balance}\n`)
     }
     console.log(this.formatedData);
   }
