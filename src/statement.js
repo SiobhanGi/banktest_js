@@ -4,6 +4,11 @@ class Statement {
     this.formatedData = '';
   }
 
+  formatDate() {
+    const date = new Date();
+    return (`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`);
+  }
+
   printHeader() {
     console.log('date \t\t|| transaction type || amount || balance');
   }
